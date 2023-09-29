@@ -39,7 +39,8 @@ BASE_APPS = [
 ]
 
 LOCAL_APPS = [
-
+    'apps.blog',
+    'apps.category',
 ]
 
 THIRD_APPS = [
