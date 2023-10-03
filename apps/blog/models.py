@@ -26,7 +26,7 @@ class Post(models.Model):
     blog_uuid =   models.UUIDField(default=uuid.uuid4, unique=True)
     title =       models.CharField(max_length=255)
     slug =        models.SlugField(unique=True)
-    thumbail =    models.ImageField(upload_to=blog_directory_path)
+    thumbnail =   models.ImageField(upload_to=blog_directory_path)
     video =       models.FileField(upload_to=blog_directory_path, blank=True, null=True)
     description = models.TextField()
     excerpt =     models.CharField(max_length=100)
@@ -46,3 +46,13 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_video(self):
+        if self.video:
+            return self.video.url
+        return ''
+
+    def get_thumbnail(self):
+        if self.thumbnail:
+            return self.thumbnail.url
+        return ''

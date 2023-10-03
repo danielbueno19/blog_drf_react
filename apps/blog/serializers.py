@@ -9,4 +9,15 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        exclude = ('objects', 'postobjects','author',) 
+        fields=[
+            'blog_uuid',
+            'title',
+            'slug',
+            'thumbnail',
+            'video',
+            'description',
+            'excerpt',
+            'category',
+            'published',
+            'status',
+        ] 
