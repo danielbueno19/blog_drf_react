@@ -12,7 +12,7 @@ const FullWithLayout = ({children}) => {
     )
 }
 
-const mapStateToPropos = state = ({
+const mapStateToPropos = state => ({
 
 })
 

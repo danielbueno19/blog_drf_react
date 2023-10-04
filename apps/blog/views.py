@@ -22,7 +22,7 @@ class BlogListView(APIView):
             serializer = PostSerializer(results, many=True)
 
             #mandamos la informacion serializada
-            return paginator.get_paginated_response({'post': serializer.data})
+            return paginator.get_paginated_response({'posts': serializer.data})
         else:
             return Response({'error':'No posts found'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         

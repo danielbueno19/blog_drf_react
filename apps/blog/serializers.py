@@ -20,4 +20,4 @@ class PostSerializer(serializers.ModelSerializer):
             'category',
             'published',
             'status',
-        ] 
+        ]
