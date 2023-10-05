@@ -1,7 +1,8 @@
 import FullWhithLayout from "hocs/layouts/FullWhithLayout"
 import { connect } from "react-redux"
 
-function Home(){
+function Home({
+}){
     return(
         <FullWhithLayout>
             home

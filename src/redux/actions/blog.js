@@ -9,7 +9,7 @@ import {
     GET_BLOG_PAGINATION_RESULTS_SUCCESS,
 } from "./types"
 
-export const get_blog_list_page = ()=> async dispatch =>{
+export const get_blog_list = ()=> async dispatch =>{
     const config = {
         headers:{
             'Accept': 'aplication/json'
@@ -37,7 +37,7 @@ export const get_blog_list_page = ()=> async dispatch =>{
     }
 }
 
-export const get_blog_list = (p)=> async dispatch =>{
+export const get_blog_list_page = (p)=> async dispatch =>{
     const config = {
         headers:{
             'Accept': 'aplication/json'
