@@ -5,8 +5,8 @@ import {
     GET_BLOG_LIST_FAIL,
     GET_BLOG_SUCCESS,
     GET_BLOG_FAIL,
-    GET_BLOG_PAGINATION_RESULTS_FAIL,
-    GET_BLOG_PAGINATION_RESULTS_SUCCESS,
+    GET_BLOG_LIST_CATEGORIES_SUCCESS,
+    GET_BLOG_LIST_CATEGORIES_FAIL,
 } from "./types"
 
 export const get_blog_list = ()=> async dispatch =>{
@@ -65,6 +65,62 @@ export const get_blog_list_page = (p)=> async dispatch =>{
     }
 }
 
+export const get_blog_list_category = (category_id)=> async dispatch =>{
+    const config = {
+        headers:{
+            'Accept': 'aplication/json'
+        }
+    }
+
+    try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/category/${category_id}`, config)
+
+        if (res.status === 200){
+            dispatch({
+                type: GET_BLOG_LIST_CATEGORIES_SUCCESS,
+                payload: res.data
+            })
+        } else {
+            dispatch({
+                type: GET_BLOG_LIST_CATEGORIES_FAIL
+            })
+        }
+
+    } catch (error) {
+        dispatch({
+            type: GET_BLOG_LIST_CATEGORIES_FAIL
+        })
+    }
+}
+
+export const get_blog_list_page_category = (category_id,p)=> async dispatch =>{
+    const config = {
+        headers:{
+            'Accept': 'aplication/json'
+        }
+    }
+
+    try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/category/${category_id}/?p=${p}`, config)
+
+        if (res.status === 200){
+            dispatch({
+                type: GET_BLOG_LIST_CATEGORIES_SUCCESS,
+                payload: res.data
+            })
+        } else {
+            dispatch({
+                type: GET_BLOG_LIST_CATEGORIES_FAIL
+            })
+        }
+
+    } catch (error) {
+        dispatch({
+            type: GET_BLOG_LIST_CATEGORIES_FAIL
+        })
+    }
+}
+
 export const get_blog = (slug)=> async dispatch =>{
     const config = {
         headers:{
@@ -77,18 +133,18 @@ export const get_blog = (slug)=> async dispatch =>{
 
         if (res.status === 200){
             dispatch({
-                type: GET_BLOG_LIST_SUCCESS,
+                type: GET_BLOG_SUCCESS,
                 payload: res.data
             })
         } else {
             dispatch({
-                type: GET_BLOG_LIST_FAIL
+                type: GET_BLOG_FAIL
             })
         }
 
     } catch (error) {
         dispatch({
-            type: GET_BLOG_LIST_FAIL
+            type: GET_BLOG_FAIL
         })
     }
 }

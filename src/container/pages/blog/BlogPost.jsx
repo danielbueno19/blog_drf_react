@@ -5,14 +5,15 @@ import { useParams } from "react-router-dom"
 import { get_blog } from "redux/actions/blog"
 
 function BlogPost({
-
+    get_blog,
+    post
 }){
     'el slug viene de la url'
     const params = useParams()
     const slug = params.slug
 
     useEffect(()=>{        
-        get_blog()
+        get_blog(slug)
     },[])
 
     return(
@@ -23,9 +24,9 @@ function BlogPost({
 }
 
 const mapStateToPropos = state =>({
-    
+    post: state.blog.post
 })
 
 export default connect(mapStateToPropos,{
-    
+    get_blog
 })(BlogPost)
